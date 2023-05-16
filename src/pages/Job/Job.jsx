@@ -30,8 +30,8 @@ const Job = ({ job }) => {
           <h2>{title}</h2>
           <p>{description}</p>
           <div className="all-skils d-flex  flex-wrap justify-content-around align-items-center">
-            {skills?.map((skill) => (
-              <button className="bg-dark text-white p-1">{skill?.value}</button>
+            {skills?.map((skill,index) => (
+              <button key={index} className="bg-dark text-white p-1">{skill?.value}</button>
             ))}
           </div>
           <div className="card-footer text-start p-4 mt-3 d-flex justify-content-between ">

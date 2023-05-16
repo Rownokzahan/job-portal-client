@@ -25,7 +25,7 @@ const MyJobs = () => {
   }, [user, control]);
 
   const handleSearch = () => {
-    fetch(`http://localhost:5000/getJobsByText/${searchText}`)
+    fetch(`http://localhost:5000/jobs/search/${searchText}`)
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
@@ -45,6 +45,16 @@ const MyJobs = () => {
           setControl(!control);
         }
         console.log(result);
+      });
+  };
+
+  const handleJobDelete = id => {
+    fetch(`http://localhost:5000/jobs/${id}`, { method: "DELETE" })
+      .then((res) => res.json())
+      .then((result) => {
+        if (result.deletedCount > 0) {
+          setControl(!control);
+        }
       });
   };
 
@@ -87,14 +97,14 @@ const MyJobs = () => {
                 </td>
                 <td>
                   {" "}
-                  <button>Delete</button>
+                  <button onClick={() => handleJobDelete(job._id)}>Delete</button>
                 </td>
               </tr>
             ))}
           </tbody>
         </Table>
       </div>
-      
+
       <UpdateJobModal
         show={modalShow}
         onHide={() => setModalShow(false)}

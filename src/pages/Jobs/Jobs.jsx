@@ -12,7 +12,7 @@ const Jobs = () => {
   const [activeTab, setActiveTab] = useState("");
 
   useEffect(() => {
-    fetch(`http://localhost:5000/jobs?type=${activeTab}`)
+    fetch(`http://localhost:5000/jobs/${activeTab}`)
       .then((res) => res.json())
       .then((result) => {
         setJob(result);
@@ -49,8 +49,9 @@ const Jobs = () => {
       </div>
       <div className="jobs-container mt-5 row">
         {jobs?.map((job) => (
-          <Job job={job}></Job>
+          <Job key={job._id} job={job}></Job>
         ))}
+        
       </div>
     </div>
   );
