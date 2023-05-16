@@ -1,5 +1,3 @@
-/* eslint-disable react/jsx-key */
-/* eslint-disable no-unused-vars */
 import React from "react";
 import { useContext } from "react";
 import { AuthContext } from "../../provider/AuthProvider";
@@ -36,8 +34,7 @@ const MyJobs = () => {
   };
 
   const handleJobUpdate = (data) => {
-    console.log(data);
-    fetch(`http://localhost:5000/updateJob/${data._id}`, {
+    fetch(`http://localhost:5000/jobs`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(data),
