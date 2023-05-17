@@ -1,26 +1,25 @@
-import React from "react";
-import { useState } from "react";
+import { useContext } from "react";
 import "./SocialLoginBtn.css";
-import {
-  GoogleAuthProvider,
-  getAuth,
-  signInWithPopup,
-  GithubAuthProvider,
-} from "firebase/auth";
+import { AuthContext } from "../../provider/AuthProvider";
 
 
 const SocialLoginBtn = () => {
 
+  const { googleLogin } = useContext(AuthContext);
+
+  const handleGoogleLogin = () => {
+    googleLogin();
+  }
+
   return (
     <div className=" social-button-container w-50 mt-3">
-      <div className="">
+      <button className="border-0" onClick={handleGoogleLogin}>
         <img
-        
           className=" social-button"
           src="https://i.ibb.co/gSTHXZJ/google-btn.png"
           alt=""
         />
-      </div>
+      </button>
       <div className="">
         <img
           className=" social-button"
